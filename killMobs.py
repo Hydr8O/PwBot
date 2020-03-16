@@ -12,33 +12,33 @@ mobsKilled = 0
 
 def relogin():
     pyautogui.press('y')
-    while pyautogui.locateOnScreen('logPass.png', confidence=0.7) == None:
+    while pyautogui.locateOnScreen('/pictures/logPass.png', confidence=0.7) == None:
         time.sleep(.5)
     pyautogui.write('')
     time.sleep(.3)
     pyautogui.press('tab')
     time.sleep(.3)
     pyautogui.write('')
-    (x, y, _, __) = pyautogui.locateOnScreen('enterGame.png', confidence=0.7)
+    (x, y, _, __) = pyautogui.locateOnScreen('/pictures/enterGame.png', confidence=0.7)
     pyautogui.click(x=x, y=y)
-    while pyautogui.locateOnScreen('enter.png', confidence=0.7) == None:
+    while pyautogui.locateOnScreen('/pictures/enter.png', confidence=0.7) == None:
         time.sleep(.5)
-    x, y, _, __ = pyautogui.locateOnScreen('enter.png', confidence=0.7)
+    x, y, _, __ = pyautogui.locateOnScreen('/pictures/enter.png', confidence=0.7)
     pyautogui.click(x=x, y=y)
-    while pyautogui.locateOnScreen('logCheck.png', confidence=0.7) == None:
+    while pyautogui.locateOnScreen('/pictures/logCheck.png', confidence=0.7) == None:
         time.sleep(.5)
     pyautogui.press('6')
     time.sleep(5)
 
 def collectResources():
-    points = [ 'firstRes.png', 'secondRes.png','thirdRes.png','forthRes.png', 'fifthRes.png' ]
+    points = [ '/pictures/firstRes.png', '/pictures/secondRes.png','/pictures/thirdRes.png','/pictures/forthRes.png', '/pictures/fifthRes.png' ]
     for point in points:
         print(point)
         time.sleep(1)
         pyautogui.keyDown('space')
         time.sleep(15)
         pyautogui.keyUp('space')
-        (x1, y1, _, _) = pyautogui.locateOnScreen('coord2.png', confidence=0.6)
+        (x1, y1, _, _) = pyautogui.locateOnScreen('/pictures/coord2.png', confidence=0.6)
         pyautogui.click(x=x1 + 13, y=y1 + 10)
         (x2, y2, _, _) = pyautogui.locateOnScreen(point, confidence=0.7)
         pyautogui.doubleClick(x=x2 + 14, y=y2 + 5)
@@ -46,7 +46,7 @@ def collectResources():
         pyautogui.click(x=x1 + 13, y=y1 + 10)
         while 1:
             time.sleep(0.5)
-            auto = pyautogui.locateOnScreen('auto.png', confidence=0.7)
+            auto = pyautogui.locateOnScreen('/pictures/auto.png', confidence=0.7)
             time.sleep(.5)
             if (auto == None):
                 time.sleep(10)
@@ -54,7 +54,7 @@ def collectResources():
                 time.sleep(13)
                 break
         try:
-            (x, y, _, __) = pyautogui.locateOnScreen('digIron3.png', confidence=0.6)
+            (x, y, _, __) = pyautogui.locateOnScreen('/pictures/digIron3.png', confidence=0.6)
             pyautogui.click(x + 10, y + 10)
             time.sleep(15)
             pyautogui.press('9')
@@ -66,19 +66,19 @@ def collectResources():
 
 def returnToPlace():
     time.sleep(1)
-    location = pyautogui.locateOnScreen('coord.png', confidence=0.5)
+    location = pyautogui.locateOnScreen('/pictures/coord.png', confidence=0.5)
     try:
         (x, y, width, height) = location
         pyautogui.click(x=(x + 13), y=(y + 10))
         time.sleep(1)
-        location = pyautogui.locateOnScreen('point.png', confidence=0.6)
+        location = pyautogui.locateOnScreen('/pictures/point.png', confidence=0.6)
         (x2, y2, width, height) = location
         pyautogui.doubleClick(x=x2+20, y=y2+5)
         pyautogui.click(x=(x + 13), y=(y + 10))
         pyautogui.moveTo(x=x-100, y=y-100)
         while 1:
             time.sleep(0.5)
-            auto = pyautogui.locateOnScreen('autoPath.png', confidence=0.7)
+            auto = pyautogui.locateOnScreen('/pictures/autoPath.png', confidence=0.7)
             time.sleep(.5)
             if (auto == None):
                 break
@@ -117,7 +117,7 @@ def killMobs():
             pyautogui.press('4')
         time.sleep(1)
                 
-        found = pyautogui.locateOnScreen('mob.png', confidence=0.5)
+        found = pyautogui.locateOnScreen('/pictures/mob.png', confidence=0.5)
         if (found == None):
             mobsKilled += 1
             print('mobs killed', mobsKilled)
@@ -129,7 +129,7 @@ def killMobs():
 
 while 1:
     if (w.GetWindowText(w.GetForegroundWindow()) == '1.4.6 Classic NEW - Твой лучший выбор в 2020 году!'):    
-        if (pyautogui.locateOnScreen('relogMes.png', confidence=0.7) != None):
+        if (pyautogui.locateOnScreen('/pictures/relogMes.png', confidence=0.7) != None):
             relogin()
         else:
             collectResources()
