@@ -1,0 +1,5 @@
+Angelica File Module Error Log
+Created(or opened) on 13/04/2020 18:55:30
+
+[18:55:30.668] AFilePackGame::Open(), Can not open file [C:\Users\YEEEEEEEEEEEEEGor\pwBotEnv\ThePwBot\configs.pck]
+[18:55:30.668] AFilePackMan::OpenFilePackageInGame(), Can not open package [configs.pck]

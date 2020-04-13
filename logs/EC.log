@@ -1,0 +1,11 @@
+Element client log file
+Created(or opened) on 13/04/2020 18:55:30
+
+[18:55:30.668] <!> CECOptimize::GetVirtualSize, NtQuerySystemInformation found
+
+[18:55:30.668] <!> CECOptimize::LogSizeOnTime, current is (0GB,130MB,916KB,0B)
+
+[18:55:30.668] <!> OS=6.2.9200, Platform=2
+
+[18:55:32.539] <!> wWinMain: Failed to call function. (line: 821)
+
