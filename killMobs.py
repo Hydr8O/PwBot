@@ -80,16 +80,13 @@ def killMobs():
         returnToPlace()
             
     time.sleep(.1)
-            # full = pyautogui.locateOnScreen('invent.png')
-            # if (full == None):
-            #     print('full')
             
     pyautogui.press('tab')
     pyautogui.hotkey('alt', '1')
     time.sleep(0.8)
-    pyautogui.press('1')
+    pwApi.useSkill(1)
     time.sleep(4)
-    pyautogui.press('3')
+    pwApi.useSkill(3)
     time.sleep(1)
             
             
@@ -110,11 +107,38 @@ def killMobs():
             pyautogui.press('3')
             break
 
-while 1:
-    if (w.GetWindowText(w.GetForegroundWindow()) == '1.4.6 Classic NEW - Твой лучший выбор в 2020 году!'):    
-        if (pyautogui.locateOnScreen('pictures\\relogMes.png', confidence=0.7) != None):
-            pwApi.relogin()
-        else:
-            returnToPlace()
-        
+def eraseCoordinates():
+    for i in range(7):
+            pyautogui.press('backspace')
+            time.sleep(.1)
+
+def setPoints(points):
+    pwApi.openCoordinates()
+    for point in points:
+        time.sleep(1)
+        addCoord = pyautogui.locateOnScreen('pictures\\addCoord.png', confidence=0.7)
+        x, y = pyautogui.center(addCoord)
+        activateInput = (x - 80, y)
+        pyautogui.click(activateInput)
+        eraseCoordinates()
+        pyautogui.write(point['coordinates'])
+        time.sleep(1)
+        pyautogui.click(pyautogui.center(addCoord))
+        pyautogui.write(point['name'])
+        pyautogui.press('enter')
+    pwApi.closeCoordinates()
+
+
+#if (w.GetWindowText(w.GetForegroundWindow()) == '1.4.6 Classic NEW - Твой лучший выбор в 2020 году!'):    
+coordinates = []
+with open('T3Iron.txt') as file:
+    for line in file:
+        coord = line.split(',')[0]
+        name = line.split(',')[1].strip()
+        coordinates.append({
+            'coordinates': coord,
+            'name': name
+        })
+time.sleep(3)
+setPoints(coordinates)
 
